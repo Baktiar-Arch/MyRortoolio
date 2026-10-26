@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pesan Terkirim — Ahmad Rapli</title>
+    <meta name="description" content="Terima kasih, pesan Anda sudah terkirim.">
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%BB%3C/text%3E%3C/svg%3E">
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="font-sans antialiased bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+    <main class="flex min-h-screen items-center justify-center px-4">
+        <div class="w-full max-w-md text-center">
+            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-500/15">
+                <svg class="h-10 w-10 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+
+            <h1 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
+                Pesan Terkirim!
+            </h1>
+
+            <p class="mt-3 text-gray-600 dark:text-gray-400">
+                Terima kasih sudah menghubungi. Pesan Anda sudah saya terima melalui Netlify Forms dan akan segera saya balas ke email Anda.
+            </p>
+
+            <a href="/"
+               class="mt-8 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-500">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                Kembali ke Beranda
+            </a>
+        </div>
+    </main>
+</body>
+</html>
