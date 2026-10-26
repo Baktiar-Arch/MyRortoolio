@@ -1,64 +1,66 @@
 @props(['project'])
 
-<article {{ $attributes->merge(['class' => 'group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900']) }}>
-    <div class="relative aspect-video overflow-hidden bg-gradient-to-br from-indigo-500/10 via-sky-500/10 to-emerald-500/10 dark:from-indigo-500/20 dark:via-sky-500/20 dark:to-emerald-500/20">
+<article {{ $attributes->merge(['class' => 'group relative flex flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_80px_140px_-90px_rgba(15,23,42,0.9)] dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700']) }}>
+    <div class="relative aspect-[16/9] overflow-hidden">
         @if ($project->thumbnail)
             <img src="{{ $project->thumbnail }}"
-                 alt="Thumbnail {{ $project->title }}"
-                 class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                 alt="{{ $project->title }}"
+                 class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                  loading="lazy">
         @else
-            <div class="flex h-full items-center justify-center">
-                <svg class="h-16 w-16 text-indigo-400/60 transition duration-300 group-hover:scale-110 dark:text-indigo-500/50" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            <div class="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-900 dark:to-gray-950">
+                <svg class="h-12 w-12 text-gray-400 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
                 </svg>
             </div>
         @endif
-
-        <div class="absolute inset-x-3 bottom-3 flex flex-wrap gap-1.5">
-            @foreach ($project->techStackList() as $tech)
-                <span class="rounded-full bg-gray-950/70 px-2.5 py-0.5 text-xs font-medium text-white backdrop-blur-sm dark:bg-gray-950/80">
-                    {{ $tech }}
-                </span>
-            @endforeach
-        </div>
+        <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-gray-900 dark:via-gray-900/80"></div>
     </div>
 
-    <div class="flex flex-1 flex-col p-5">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-white">
-            {{ $project->title }}
-        </h3>
+    <div class="flex flex-1 flex-col gap-6 p-6 sm:p-8">
+        <div class="flex flex-col gap-3">
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300">Backend Architecture</span>
+                <span class="rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300">RESTful API</span>
+                <span class="rounded-full border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300">Database Design & Optimization</span>
+            </div>
+            <h3 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                {{ $project->title }}
+            </h3>
+            <p class="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+                {{ $project->description }}
+            </p>
+        </div>
 
-        <p class="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            {{ $project->description }}
-        </p>
+        <div class="flex flex-wrap items-center gap-2">
+            @foreach ($project->techStackList() as $tech)
+                <x-skill-badge :name="$tech" />
+            @endforeach
+        </div>
 
-        <div class="mt-5 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-gray-800">
+        <div class="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 pt-6 dark:border-gray-800">
             <a href="{{ route('portfolio.show', $project) }}"
-               class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-                Detail
-                <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+               class="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 transition hover:gap-2.5 dark:text-white">
+                Baca detail
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
             </a>
-
-            <div class="flex items-center gap-3">
-                @if ($project->demo_url)
-                    <a href="{{ $project->demo_url }}"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="text-sm font-medium text-gray-500 transition hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400"
-                       aria-label="Demo {{ $project->title }}">
-                        Demo
-                    </a>
-                @endif
+            <div class="flex items-center gap-4 text-sm">
                 @if ($project->repo_url)
                     <a href="{{ $project->repo_url }}"
                        target="_blank"
                        rel="noopener noreferrer"
-                       class="text-sm font-medium text-gray-500 transition hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400"
-                       aria-label="Repository {{ $project->title }}">
-                        Repo
+                       class="font-medium text-gray-600 transition hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                        Repository
+                    </a>
+                @endif
+                @if ($project->demo_url)
+                    <a href="{{ $project->demo_url }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="font-medium text-gray-600 transition hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                        Live
                     </a>
                 @endif
             </div>
