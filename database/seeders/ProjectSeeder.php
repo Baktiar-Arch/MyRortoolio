@@ -17,8 +17,8 @@ class ProjectSeeder extends Seeder
                     .'dan kasir serta fitur cetak struk PDF. Dibangun dengan arsitektur service '
                     .'layer agar mudah dikembangkan.',
                 'tech_stack' => 'Laravel 11, Tailwind CSS, Alpine.js, MySQL, DomPDF',
-                'demo_url' => 'https://demo-example.test/kasir',
-                'repo_url' => 'https://github.com/yourusername/si-kasir',
+                'demo_url' => null,
+                'repo_url' => 'https://github.com/artfulabysswalker/si-kasir',
                 'thumbnail' => null,
             ],
             [
@@ -28,7 +28,7 @@ class ProjectSeeder extends Seeder
                     .'serta cache untuk mempercepat halaman depan.',
                 'tech_stack' => 'Laravel 11, Blade, Tailwind CSS, MySQL, Redis',
                 'demo_url' => null,
-                'repo_url' => 'https://github.com/yourusername/portal-berita',
+                'repo_url' => 'https://github.com/artfulabysswalker/portal-berita',
                 'thumbnail' => null,
             ],
             [
@@ -37,9 +37,17 @@ class ProjectSeeder extends Seeder
                     .'pengguna. Termasuk dashboard monitoring kehadiran real-time, export laporan '
                     .'Excel bulanan, dan notifikasi email keterlambatan.',
                 'tech_stack' => 'Laravel 11, Livewire, Tailwind CSS, MySQL, Maatwebsite Excel',
-                'demo_url' => 'https://demo-example.test/absensi',
-                'repo_url' => 'https://github.com/yourusername/absensi-qr',
+                'demo_url' => null,
+                'repo_url' => 'https://github.com/artfulabysswalker/absensi-qr',
                 'thumbnail' => null,
+            ],
+            [
+                'title' => 'Cafe Berco - POS & Cafe Management System',
+                'description' => 'Sistem informasi manajemen kafe berbasis Laravel 12 + Livewire untuk mendukung operasional kafe: POS, QR Menu untuk pelanggan, manajemen resep & HPP, inventori bahan baku, manajemen shift kasir, loyalty & gamification, serta laporan finansial.',
+                'tech_stack' => 'Laravel 12, Livewire, Alpine.js, Blade, Tailwind CSS, MySQL / SQLite, Vite',
+                'demo_url' => null,
+                'repo_url' => 'https://github.com/artfulabysswalker/project_cafe_berco.git',
+                'thumbnail' => '/images/projects/cafe-berco.png',
             ],
         ];
 
